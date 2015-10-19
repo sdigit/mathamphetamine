@@ -50,6 +50,8 @@
 #include "../include/cephes.h"  
 #include "../include/utilities.h"
 
+FILE *results[NUMOFTESTS+1];
+
 void	partitionResultFile(int numOfFiles, int numOfSequences, int option, int testNameID);
 void	postProcessResults(int option);
 int		cmp(const double *a, const double *b);
@@ -118,7 +120,6 @@ partitionResultFile(int numOfFiles, int numOfSequences, int option, int testName
 	int		i, k, m, j, start, end, num, numread;
 	float	c;
 	FILE	**fp = (FILE **)calloc(numOfFiles+1, sizeof(FILE *));
-	int		*results = (int *)calloc(numOfFiles, sizeof(int *));
 	char	*s[MAXFILESPERMITTEDFORPARTITION];
 	char	resultsDir[200];
 	
@@ -171,7 +172,7 @@ partitionResultFile(int numOfFiles, int numOfSequences, int option, int testName
 			
 			for ( j=start; j<=end; j++ ) {		/* POPULATE FILE */
 				fscanf(fp[numOfFiles], "%f", &c);
-				fprintf(fp[j], "%f\n", c);
+				fprintf(fp[j], "%f\n", (double)c);
 				numread++;
 			}
 
@@ -191,7 +192,7 @@ cmp(const double *a, const double *b)
 {
 	if ( *a < *b )
 		return -1;
-	if ( *a == *b )
+	if ( *(const int*)a == *(const int*)b )
 		return 0;
 	return 1;
 }
@@ -284,7 +285,7 @@ computeMetrics(char *s, int test)
 {
 	int		j, pos, count, passCount, sampleSize, expCount, proportion_threshold_min, proportion_threshold_max;
 	int		freqPerBin[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	double	*A, *T, chi2, proportion, uniformity, p_hat, tmp;
+	double	*A, *T, chi2, uniformity, p_hat;
 	float	c;
 	FILE	*fp;
 	
@@ -311,7 +312,7 @@ computeMetrics(char *s, int test)
 		}
 		for ( j=0; j<sampleSize; j++ ) {
 			fscanf(fp, "%f", &c);
-			if ( c > 0.000000 )
+			if ( c > (float)0.000000 )
 				T[count++] = c;
 		}
 		
@@ -337,7 +338,7 @@ computeMetrics(char *s, int test)
 		}
 		for ( j=0; j<sampleSize; j++ ) {
 			fscanf(fp, "%f", &c);
-			if ( c < ALPHA )
+			if ( c < (float)ALPHA )
 				count++;
 			A[j] = c;
 		}
@@ -350,12 +351,12 @@ computeMetrics(char *s, int test)
 	p_hat = 1.0 - ALPHA;
 	proportion_threshold_max = (p_hat + 3.0 * sqrt((p_hat*ALPHA)/sampleSize)) * sampleSize;
 	proportion_threshold_min = (p_hat - 3.0 * sqrt((p_hat*ALPHA)/sampleSize)) * sampleSize;
-	
+
 	/* Compute Metric 2: Histogram */
 	
 	qsort((void *)A, sampleSize, sizeof(double), (void *)cmp);
 	for ( j=0; j<sampleSize; j++ ) {
-		pos = (int)floor(A[j]*10);
+		pos = floor(A[j]*10);
 		if ( pos == 10 )
 			pos--;
 		freqPerBin[pos]++;

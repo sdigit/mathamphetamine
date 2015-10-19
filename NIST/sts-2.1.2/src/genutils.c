@@ -176,6 +176,7 @@ int Mult(BYTE *A, BYTE *B, int LB, BYTE *C, int LC)
 	DIGIT	result;
 
 	LA = LB + LC;
+    if (LA) { /* ignored */ }
 
 	for ( i=LB-1; i>=0; i-- ) {
 		result = 0;
