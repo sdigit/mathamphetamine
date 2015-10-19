@@ -8,7 +8,7 @@
 BitSequence	*epsilon;				// BIT STREAM
 TP			tp;						// TEST PARAMETER STRUCTURE
 FILE		*stats[NUMOFTESTS+1];	// FILE OUTPUT STREAM
-FILE		*results[NUMOFTESTS+1];	// FILE OUTPUT STREAM
+extern FILE *results[NUMOFTESTS+1];	// FILE OUTPUT STREAM
 FILE		*freqfp;				// FILE OUTPUT STREAM
 FILE		*summary;				// FILE OUTPUT STREAM
 int			testVector[NUMOFTESTS+1];
