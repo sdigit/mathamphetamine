@@ -2,16 +2,16 @@
 
 //#include	"../include/sha.h"
 
-void	lcg();
+void	lcg(void);
 double	lcg_rand(int, double, double*, int);
-void	quadRes1();
-void	quadRes2();
-void	cubicRes();
-void	exclusiveOR();
-void	modExp();
-void	bbs();
-void	micali_schnorr();
-void	SHA1();
+void	quadRes1(void);
+void	quadRes2(void);
+void	cubicRes(void);
+void	exclusiveOR(void);
+void	modExp(void);
+void	bbs(void);
+void	micali_schnorr(void);
+void	SHA1(void);
 
 
 /* The circular shifts. */
