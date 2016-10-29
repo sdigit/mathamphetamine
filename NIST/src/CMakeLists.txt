@@ -26,7 +26,7 @@ set(NIST_STS_SRC
     utilities.c)
 
 IF (CMAKE_C_COMPILER MATCHES "icc")
-  ADD_COMPILE_OPTIONS(-ip -ipo -xHost -mkl)
+  ADD_COMPILE_OPTIONS(-ip -ipo -xHost -mkl -O2 -fast)
 ENDIF()
 
 ADD_EXECUTABLE(assess ${NIST_STS_SRC})
