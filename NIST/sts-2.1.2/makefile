@@ -1,5 +1,6 @@
 CC = icc
-WARNOPTS=-Wall -Wextra -Wunused -Wstrict-prototypes -Wcast-qual -Wshadow -Wpointer-arith -Winit-self
+WARNOPTS=-Wall -Wextra -Wcheck -Wunused \
+-Wstrict-prototypes -Wcast-qual -Wshadow -Wpointer-arith -Winit-self
 # -Wdouble-promotion -Wfloat-equal
 ICCFLAGS = -ip -ipo -xHost -mkl -qopt-report=4
 ROOTDIR = .
