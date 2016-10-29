@@ -25,5 +25,9 @@ set(NIST_STS_SRC
     universal.c
     utilities.c)
 
+IF (CMAKE_C_COMPILER MATCHES "icc")
+  ADD_COMPILE_OPTIONS(-ip -ipo -xHost -mkl)
+ENDIF()
+
 ADD_EXECUTABLE(assess ${NIST_STS_SRC})
 TARGET_LINK_LIBRARIES(assess m)
