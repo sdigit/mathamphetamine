@@ -16,10 +16,6 @@ DISTFILES = Makefile ent.c ent.exe ent.html \
 	    chisq.c \
 	    ent.sln ent.vcproj
 
-release:
-	rm -f random.zip
-	zip random.zip $(DISTFILES)
-
 TESTFILE = entitle.gif
 
 check:	ent
