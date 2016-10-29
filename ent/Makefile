@@ -2,7 +2,7 @@
 #   Unix make file for random test program
 
 CC = icc
-CFLAGS = -O2 -mkl -fast -s
+CFLAGS = -O3 -ip -ipo -xHost -mkl -fast
 
 ent:	ent.o iso8859.o randtest.o chisq.o
 	$(CC) $(CFLAGS) ent.o iso8859.o randtest.o chisq.o -o ent -lm
@@ -19,4 +19,4 @@ lint:
 	lint *.c
 
 clean:
-	rm -f *.o *.bak ent ent.zip
+	rm -f *.o ent
