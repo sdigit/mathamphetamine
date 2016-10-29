@@ -1,7 +1,5 @@
-CC = gcc
-WARNOPTS=-Wall -Wextra -Wunused -Wstrict-prototypes -Wcast-align -Wcast-qual \
--Wshadow -Wbad-function-cast -Wlogical-op -Wpointer-arith -Wtrampolines \
--Winit-self -Wunsafe-loop-optimizations #\
+CC = icc
+WARNOPTS=-Wall -Wextra -Wunused -Wstrict-prototypes -Wcast-qual -Wshadow -Wpointer-arith -Winit-self
 # -Wdouble-promotion -Wfloat-equal
 GCCFLAGS = -g $(WARNOPTS)
 ROOTDIR = .

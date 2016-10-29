@@ -1,9 +1,9 @@
 
 #   Unix make file for random test program
 
-CC = gcc
-CFLAGS = -g -Wall
-#CFLAGS = -O
+CC = icc
+#CFLAGS = -g -Wall
+CFLAGS = -O2 -mkl -fast -s
 
 ent:	ent.o iso8859.o randtest.o chisq.o
 	$(CC) $(CFLAGS) ent.o iso8859.o randtest.o chisq.o -o ent -lm
