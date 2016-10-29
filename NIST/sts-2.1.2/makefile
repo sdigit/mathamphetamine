@@ -91,6 +91,6 @@ $(OBJDIR)/generators.o: $(SRCDIR)/generators.c defs.h externs.h utilities.h \
 	$(CC) -c -o $@ $(ICCFLAGS) $(SRCDIR)/generators.c
 
 clean:
-	rm -f assess $(OBJDIR)/*.o *.optrpt
+	rm -f assess $(OBJDIR)/*.o *.optrpt obj/*.optrpt
 
 rebuild: clean assess
