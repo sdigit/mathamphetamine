@@ -57,8 +57,7 @@ void	postProcessResults(int option);
 int		cmp(const double *a, const double *b);
 int		computeMetrics(char *s, int test);
 
-int
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int		i;
 	int		option;			/* TEMPLATE LENGTH/STREAM LENGTH/GENERATOR*/
@@ -119,10 +118,13 @@ partitionResultFile(int numOfFiles, int numOfSequences, int option, int testName
 { 
 	int		i, k, m, j, start, end, num, numread;
 	float	c;
-	FILE	**fp = (FILE **)calloc(numOfFiles+1, sizeof(FILE *));
+	size_t	fsz;
+	FILE	**fp;
 	char	*s[MAXFILESPERMITTEDFORPARTITION];
 	char	resultsDir[200];
-	
+
+	fsz = sizeof((FILE *)NULL);
+	fp = calloc(numOfFiles+1, fsz);
 	for ( i=0; i<MAXFILESPERMITTEDFORPARTITION; i++ )
 		s[i] = (char*)calloc(200, sizeof(char));
 	
