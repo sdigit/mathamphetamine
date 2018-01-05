@@ -1,8 +1,7 @@
 CC = gcc
 WARNOPTS=-Wall -Wextra -Wcheck -Wunused \
--Wstrict-prototypes -Wcast-qual -Wshadow -Wpointer-arith -Winit-self
-# -Wdouble-promotion -Wfloat-equal
-ICCFLAGS = -ip -ipo -xHost -mkl -qopt-report=4
+-Wstrict-prototypes -Wcast-qual -Wshadow -Wpointer-arith -Winit-self \
+-Wdouble-promotion -Wfloat-equal
 ROOTDIR = .
 SRCDIR = $(ROOTDIR)/src
 OBJDIR = $(ROOTDIR)/obj
