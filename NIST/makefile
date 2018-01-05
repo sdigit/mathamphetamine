@@ -1,4 +1,4 @@
-CC = icc
+CC = gcc
 WARNOPTS=-Wall -Wextra -Wcheck -Wunused \
 -Wstrict-prototypes -Wcast-qual -Wshadow -Wpointer-arith -Winit-self
 # -Wdouble-promotion -Wfloat-equal
